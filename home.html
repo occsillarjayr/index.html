@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Romeo Portfolio</title>
+
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #e8efff;
+      color: #222;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 8%;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    header h2 {
+      font-weight: 700;
+      color: #3b5bdb;
+      letter-spacing: 1px;
+    }
+    
+    nav a {
+      margin-left: 12px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+   nav a:hover {
+      background: #e8efff;
+      color: #3b5bdb;
+      transform: translateY(-2px);
+    }
+    
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 4px;
+      width: 0%;
+      height: 2px;
+      background: #3b5bdb;
+      transition: 0.3s;
+      transform: translateX(-50%);
+      border-radius: 10px;
+    }
+
+    nav a:hover::after {
+      width: 60%;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 8% 60px;
+    }
+
+    /* HOME */
+    .home {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .home-text {
+      max-width: 500px;
+    }
+
+    .home-text h1 {
+      font-size: 68px;
+      margin-bottom: 10px;
+    }
+
+    .home-text span {
+      color: #3b5bdb;
+    }
+
+    .home-text p {
+      margin: 15px 0;
+      font-size: 25px;
+      line-height: 1.5;
+    }
+    /* .hire-btn {
+      font-size: 18px;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 600;
+      background: linear-gradient(90deg, #3b5bdb, #4dabf7);
+      box-shadow: 0 6px 20px rgba(59, 91, 219, 0.4);
+      transition: 0.3s;
+    }  */
+
+     /* .hire-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 91, 219, 0.6);
+    } */
+    .social-icons {
+      margin-top: 15px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      font-size: 22px;
+      color: #3b5bdb;
+      background: white;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-4px);
+      color: white;
+      background: #3b5bdb;
+    }
+    .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(90deg, #3b5bdb, #4993cf);
+    box-shadow: 0 6px 20px rgba(59, 91, 219, 0.4);
+    transition: 0.3s ease;
+    position: relative;
+    z-index: 10;
+   }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(59, 91, 219, 0.6);
+   }
+
+    .profile-frame {
+      width: 380px;
+      height: 650px;
+      padding: 18px;
+      border-radius: 200px;
+      background: linear-gradient(180deg, #1a00ff, #4d2fff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 80px;
+    }
+
+    .profile-inner {
+      width: 100%;
+      height: 100%;
+      background: black;
+      border-radius: 180px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 80px;
+    }
+
+    .profile-name {
+      margin-top: 15px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #444;
+      font-weight: 500;
+      margin-right: -50px;
+    }
+
+    /* frame styles */
+    .profile-frame {
+      width: 380px;
+      height: 650px;
+      padding: 18px;
+      border-radius: 200px;
+      background: linear-gradient(180deg, #1a00ff, #4d2fff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 150px;
+    }
+
+    .profile-inner {
+      width: 100%;
+      height: 100%;
+      background: black;
+      border-radius: 180px;
+      overflow: hidden;
+    }
+
+    .profile-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* CARDS */
+    #experience {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 380px);
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .card {
+      background: linear-gradient(135deg, #ffffff, #e8efff);
+      border-left: 6px solid #3b5bdb;
+      padding: 40px;
+      border-radius: 18px;
+      min-height: 180px;
+      font-size: 16px;
+    }
+    .card h3 {
+      color: #3b5bdb;
+    }
+    #experience h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    .card:hover {
+      background: linear-gradient(135deg, #eef3ff, #ffffff);
+      transform: translateY(-10px) scale(1.02);
+    
+}
+
+    /* Gradient glow border effect */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 2px;
+      background: linear-gradient(135deg, #1a00ff, #4d2fff, #4dabf7);
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    /* Hover effects */
+      .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(59, 91, 219, 0.25);
+    }
+
+      .card:hover::before {
+      opacity: 1;
+    }
+
+    /* Text animation */
+      .card h3 {
+      transition: 0.3s;
+    }
+
+      .card:hover h3 {
+      color: #3b5bdb;
+    }
+        
+    /* SKILLS */
+    /* SKILLS SECTION */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  width: 100vw;       
+  max-width: 100%;    
+  padding: 0 8%;     
+  margin-top: 40px;
+}
+/* Card */
+.skill-card {
+  background: white;
+  padding: 18px 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+/* Hover glow */
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(59, 91, 219, 0.25);
+}
+
+/* Header */
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* Bar background */
+.bar {
+  height: 14px;
+  background: #e3e8ff;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+/* Progress */
+.bar div {
+  height: 100%;
+  width: 0;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #1a00ff, #4d2fff, #4dabf7);
+  box-shadow: 0 5px 15px rgba(59, 91, 219, 0.5);
+  position: relative;
+  transition: width 1.2s ease;
+}
+
+/* Shine animation */
+.bar div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.4);
+  transform: skewX(-25deg);
+  animation: shine 2s infinite;
+    }
+
+@keyframes shine {
+  0% { left: -50%; }
+  100% { left: 120%; }
+    }
+    /* MENU BUTTON */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #3b5bdb;
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    position: absolute;
+    top: 70px;
+    right: 5%;
+    background: white;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    flex-direction: column;
+    display: none;
+    padding: 10px 0;
+  }
+
+  nav a {
+    display: block;
+    padding: 12px;
+    margin: 0;
+    text-align: center;
+  }
+
+  nav.active {
+    display: flex;
+  }
+}
+/* OVERLAY BACKGROUND */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+}
+
+/* SHOW OVERLAY */
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: 1fr; /* stack on mobile */
+  }
+}    
+
+    /* CONTACT */
+   #contact {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 1px solid #d6ddff;
+      outline: none;
+      transition: 0.3s;
+      font-size: 14px;
+      background: #fff;
+    }
+    form .btn {
+    width: 100%;
+      background: linear-gradient(90deg, #3b5bdb, #4a9de1);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 6px 20px rgba(59, 91, 219, 0.3);
+    }
+
+    form .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(59, 91, 219, 0.45);
+    }
+
+    form input:focus,
+    form textarea:focus {
+    border-color: #3b5bdb;
+    box-shadow: 0 0 0 4px rgba(59, 91, 219, 0.15);
+    }
+    /* RESPONSIVE */
+   @media (max-width: 1024px) {
+
+  /* HOME */
+  .home {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .home-text h1 {
+    font-size: 50px;
+  }
+
+  .home-text p {
+    font-size: 18px;
+  }
+
+  /* PROFILE */
+  .profile-frame {
+    width: 320px;
+    height: 520px;
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .profile-container {
+    margin-right: 0;
+  }
+}
+
+/* TABLET + PHONE */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav {
+  z-index: 1001;
+}
+
+  header {
+    padding: 12px 5%;
+  }
+
+  /* HOME */
+  .home-text h1 {
+    font-size: 38px;
+  }
+
+  .home-text p {
+    font-size: 16px;
+  }
+
+  /* EXPERIENCE GRID */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* SKILLS GRID */
+  .skills-container {
+    grid-template-columns: 1fr;
+    padding: 0 5%;
+  }
+
+  /* PROFILE */
+  .profile-frame {
+    width: 250px;
+    height: 420px;
+  }
+
+  /* CONTACT FORM */
+  form {
+    width: 90%;
+  }
+}
+/* SOCIALS IN MENU */
+.menu-socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.menu-socials a {
+  font-size: 18px;
+  color: #3b5bdb;
+  background: #f1f4ff;
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.menu-socials a:hover {
+  background: #3b5bdb;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+
+  .home-text h1 {
+    font-size: 30px;
+  }
+
+  .home-text p {
+    font-size: 14px;
+  }
+
+  .profile-frame {
+    width: 220px;
+    height: 360px;
+  }
+
+  .card {
+    padding: 25px;
+    position: relative;
+  }
+
+  header h2 {
+    font-size: 18px;
+  }
+}
+    
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+ <header>
+  <h2>Romeo</h2>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <div class="overlay" onclick="closeMenu()"></div>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <nav id="navMenu">
+    <a onclick="scrollToSection('home'); toggleMenu()">Home</a>
+    <a onclick="scrollToSection('experience'); toggleMenu()">Experience</a>
+    <a onclick="scrollToSection('skills'); toggleMenu()">Skills</a>
+    <a onclick="scrollToSection('education'); toggleMenu()">Education</a>
+    <a onclick="scrollToSection('contact'); toggleMenu()">Contact</a>
+  </nav>
+</header>
+  <!-- HOME -->
+  <section id="home" class="home">
+    <div class="home-text">
+      <h1>Passionate <br><span>UI/UX Designer</span></h1>
+      <p>Elevating user experiences with creative UI/UX design and development.</p><br>
+      <p>I'm a freelance UX designer based in Toronto, 
+        Canada. I've worked with startups and established companies.
+         I'm passionate about my work.</p>
+     <a onclick="scrollToSection('contact')" class="btn">Hire me</a>
+  
+    </div>
+
+    <div class="profile-container">
+  <div class="profile-frame">
+    <div class="profile-inner">
+      <img src="sillarpic.jpg" alt="Profile">
+    </div>
+  </div>
+  <p class="profile-name">ROMEO L. SILLAR JR.</p>
+</div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Web Developer</h3>
+        <p>Built responsive websites using HTML, CSS, and JavaScript.</p>
+      </div>
+      <div class="card">
+        <h3>App Developer</h3>
+        <p>Created mobile apps focusing on performance and usability.</p>
+      </div>
+      <div class="card">
+        <h3>UI/UX Designer</h3>
+        <p>Designed user-centered interfaces improving user experience.</p>
+      </div>
+      <div class="card">
+        <h3>Designer</h3>
+        <p>Worked on branding, layouts, and visual identity projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+  <h2>Skills</h2>
+
+  <div class="skills-container">
+
+    <div class="skill-card">
+      <div class="skill-header">
+        <span>Web Development <br></span>
+        <span>77%</span>
+      </div>
+      <div class="bar">
+        <div data-width="77%"></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-header">
+        <span>App Development</span>
+        <span>80%</span>
+      </div>
+      <div class="bar">
+        <div data-width="80%"></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-header">
+        <span>UI/UX Design</span>
+        <span>79%</span>
+      </div>
+      <div class="bar">
+        <div data-width="79%"></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-header">
+        <span>Design</span>
+        <span>87%</span>
+      </div>
+      <div class="bar">
+        <div data-width="87%"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="grid">
+      <div class="card"> <h3>Primary Education</h3>
+      <p>Central Mindanao  University <br> Graduated: 2006</p></div>
+
+      <div class="card"><h3>Secondary Education</h3>
+      <p>Central Mindanao University <br> Graduated: 2010</p></div>
+
+      <div class="card"><h3>Upper Secondary Education</h3>
+      <p>Central Mindanao University <br> Graduated: 2012</p></div>
+
+      <div class="card"><h3>Tertiary Education</h3>
+      <p>University of the Philippines Diliman <br> Graduated: 2015</p></div>
+
+      <div class="card"><h3>Postgraduate Education</h3>
+      <p>Mapua Univeristy <br> Graduated: 2017</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <textarea rows="5" placeholder="Message"></textarea>
+      <button class="btn">Submit</button>
+    </form>
+    <div class="menu-socials">
+  <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://www.instagram.com/?hl=en"><i class="fab fa-instagram"></i></a>
+  <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+</div>
+  </section>
+
+  <!-- SCRIPT -->
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+      });
+      
+    }
+
+  </script>
+ 
+  
+<script>
+  const skillBars = document.querySelectorAll(".bar div");
+
+  function animateSkills() {
+    skillBars.forEach(bar => {
+      const rect = bar.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 50) {
+        bar.style.width = bar.getAttribute("data-width");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", animateSkills);
+</script>
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("navMenu");
+    const overlay = document.querySelector(".overlay");
+
+    nav.classList.toggle("active");
+    overlay.classList.toggle("active");
+  }
+
+  function closeMenu() {
+    const nav = document.getElementById("navMenu");
+    const overlay = document.querySelector(".overlay");
+
+    nav.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+</script>
+
+</body>
+</html>
